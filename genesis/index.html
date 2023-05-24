@@ -1,0 +1,1190 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="CubeChain">
+      
+      
+        <link rel="canonical" href="https://docs.cube.network/genesis/">
+      
+      
+        <link rel="prev" href="../consensus/">
+      
+      
+        <link rel="next" href="../dev/install/">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
+    
+    
+      
+        <title>Genesis - CubeChain docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#genesis-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CubeChain docs" class="md-header__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CubeChain docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Genesis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CubeChain docs" class="md-nav__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../images/favicon.png" alt="logo">
+
+    </a>
+    CubeChain docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About Cube
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wallet/" class="md-nav__link">
+        Wallet
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bridge/" class="md-nav__link">
+        Bridge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consensus/" class="md-nav__link">
+        Consensus
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Genesis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Genesis
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    Glossary
+  </a>
+  
+    <nav class="md-nav" aria-label="Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chain-config" class="md-nav__link">
+    Chain config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-header-related-config" class="md-nav__link">
+    Block header related config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accounts-and-system-contacts-config" class="md-nav__link">
+    Accounts and system contacts config
+  </a>
+  
+    <nav class="md-nav" aria-label="Accounts and system contacts config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-owned-accounts-allocation" class="md-nav__link">
+    External owned accounts allocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staking-contract-config" class="md-nav__link">
+    Staking contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communitypool-contract-config" class="md-nav__link">
+    CommunityPool contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonuspool-contract-config" class="md-nav__link">
+    BonusPool contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genesislock-contract-config" class="md-nav__link">
+    GenesisLock contract config
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validators-info" class="md-nav__link">
+    validators info
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-genesis" class="md-nav__link">
+    Verify genesis
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify genesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-tool" class="md-nav__link">
+    Check tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-method" class="md-nav__link">
+    Check method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-genesis" class="md-nav__link">
+    Built-in genesis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mainnet" class="md-nav__link">
+    mainnet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testnet" class="md-nav__link">
+    testnet
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/install/" class="md-nav__link">
+        Compile and Run
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/deploy/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/sdk/" class="md-nav__link">
+        On-chain Interaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/about-eip1559/" class="md-nav__link">
+        About EIP1559
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/about-finality/" class="md-nav__link">
+        About Finality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/contract/" class="md-nav__link">
+        Contract
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/private_chain/" class="md-nav__link">
+        Private Chain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/graphnode/" class="md-nav__link">
+        Graph Node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mainnet/" class="md-nav__link">
+        Mainnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testnet/" class="md-nav__link">
+        Testnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/dapp-gov/" class="md-nav__link">
+        DApp-Governance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/wallet-connect/" class="md-nav__link">
+        WalletConnect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/white-application/" class="md-nav__link">
+        Whitelist Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/price-oracle/" class="md-nav__link">
+        Price Oracle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Announcement/" class="md-nav__link">
+        Announcement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    Glossary
+  </a>
+  
+    <nav class="md-nav" aria-label="Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chain-config" class="md-nav__link">
+    Chain config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-header-related-config" class="md-nav__link">
+    Block header related config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accounts-and-system-contacts-config" class="md-nav__link">
+    Accounts and system contacts config
+  </a>
+  
+    <nav class="md-nav" aria-label="Accounts and system contacts config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-owned-accounts-allocation" class="md-nav__link">
+    External owned accounts allocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staking-contract-config" class="md-nav__link">
+    Staking contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communitypool-contract-config" class="md-nav__link">
+    CommunityPool contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonuspool-contract-config" class="md-nav__link">
+    BonusPool contract config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genesislock-contract-config" class="md-nav__link">
+    GenesisLock contract config
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validators-info" class="md-nav__link">
+    validators info
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-genesis" class="md-nav__link">
+    Verify genesis
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify genesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-tool" class="md-nav__link">
+    Check tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-method" class="md-nav__link">
+    Check method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-genesis" class="md-nav__link">
+    Built-in genesis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mainnet" class="md-nav__link">
+    mainnet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testnet" class="md-nav__link">
+    testnet
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="genesis-file">Genesis file</h1>
+<p>Both the mainnet and testnet genesis information of <code>Cube</code> chain have been hardcoded in blockchain, and the corresponding genesis files are listed below for verification.</p>
+<h2 id="glossary">Glossary</h2>
+<p>Genesis file defines all the information needed to create a genesis block. It is organized in json format. It contains the following 4 sections:
+- chain config
+- block header related config
+- accounts and system contacts config
+- validator info</p>
+<p>Beside, the system contracts are under the directory <code>contracts/builtin/</code> in the <code>Cube</code> repo.</p>
+<h3 id="chain-config">Chain config</h3>
+<p>The name of chain config item is <code>config</code>,including <code>chainId</code>, hard fork info, consensus engine config. Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;config&quot;: {
+        &quot;chainId&quot;: 1819,
+        &quot;homesteadBlock&quot;: 0,
+        &quot;eip150Block&quot;: 0,
+        &quot;eip150Hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;eip155Block&quot;: 0,
+        &quot;eip158Block&quot;: 0,
+        &quot;byzantiumBlock&quot;: 0,
+        &quot;constantinopleBlock&quot;: 0,
+        &quot;petersburgBlock&quot;: 0,
+        &quot;istanbulBlock&quot;: 0,
+        &quot;berlinBlock&quot;: 0,
+        &quot;londonBlock&quot;: 0,
+        &quot;chaos&quot;: {
+            &quot;period&quot;: 3,
+            &quot;epoch&quot;: 200,
+            &quot;attestationDelay&quot;: 2,
+            &quot;rule&quot;: 1
+        }
+    }
+}
+</code></pre>
+<p>Specifically, <code>chainId</code> is blockchain identifier which was defined in EIP-155 to avoid replay attack. Mainnet is 1818, and testnet 1819. Besides, users can customize it when setting up a private chain.</p>
+<p><code>homesteadBlock</code> ~ <code>muirGlacierBlock</code> are the hard fork info inherited from ethereum, which should be all zero</p>
+<p><code>chaos</code> is the consensus engine config of Cube. In detail, <code>period</code> is the block interval (whose unit is second) as well as <code>epoch</code> is the number of blocks which can be produced in an epoch. <code>attestationDelay</code> is the number of blocks, before which we can do consensus. <code>rule</code> indicates the rewards plan. Usually <code>rule</code> is only set in Testnet and should be omitted otherwise.</p>
+<p>One thing should be mentioned is that the chain config will not be included in the genesis block although it will be persisted on disk. Therefore it could be changed afterwards.</p>
+<h3 id="block-header-related-config">Block header related config</h3>
+<p>The info of block header is in the top level of the config, Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;parentHash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;number&quot;: &quot;0x0&quot;,
+    &quot;timestamp&quot;: &quot;0x624e601f&quot;,
+    &quot;coinbase&quot;: &quot;0x0000000000000000000000000000000000000000&quot;,
+    &quot;difficulty&quot;: &quot;0x1&quot;,
+    &quot;gasLimit&quot;: &quot;0x2625a00&quot;,
+    &quot;gasUsed&quot;: &quot;0x0&quot;,
+    &quot;nonce&quot;: &quot;0x0&quot;,
+    &quot;mixHash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;extraData&quot;: &quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;
+}
+</code></pre>
+<p>As showing above, all the items are basic info in block header. </p>
+<p>Among all these items, <code>nonce</code> and <code>mixHash</code> are something used in PoW, which is deprecated in Cube.</p>
+<p>the meaning of other config items are listed as follows: 
+- <code>parentHash</code>: hash of parent block
+- <code>number</code>: block numner
+- <code>timestamp</code>: timestamp of block prodution
+- <code>coinbase</code>: the address of block producer
+- <code>difficulty</code>: difficulty in consensus
+- <code>gasLimit</code>: max gas can be used
+- <code>gasUsed</code>: gas actually used
+- <code>extraData</code>: extra data in header</p>
+<p>Specifically, <code>extraData</code> contains 3 parts: vanity(32 bytes), validator address list, signature (65 bytes). Validator address list will be added into extra data automatically by Cube, so we only need to set vanity and signature, which should be all zero in common.</p>
+<h3 id="accounts-and-system-contacts-config">Accounts and system contacts config</h3>
+<p>All of the configs are located in <code>alloc</code>. It contains the token allocation of external owned accounts as well as system contracts initializations, including Staking, CommunityPool, BonusPool and GenesisLock</p>
+<p>Each system contract has been assigned fixed addresses preliminarily
+- Staking Contract:       0x000000000000000000000000000000000000F000
+- CommunityPool Contract: 0x000000000000000000000000000000000000F001
+- BonusPool Contract:     0x000000000000000000000000000000000000F002
+- GenesisLock Contract:   0x000000000000000000000000000000000000F003</p>
+<h4 id="external-owned-accounts-allocation">External owned accounts allocation</h4>
+<p>Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;alloc&quot;: {
+        &quot;352BbF453fFdcba6b126a73eD684260D7968dDc8&quot;: {
+        &quot;balance&quot;: &quot;50000000000000000000&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>352BbF453fFdcba6b126a73eD684260D7968dDc8</code> is account address, <code>banlance</code> is the amount of token allocation in Wei</p>
+<h4 id="staking-contract-config">Staking contract config</h4>
+<p>Staking contract is used to manage validators as well as staked assets. Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;alloc&quot;: {
+        &quot;000000000000000000000000000000000000F000&quot;: {
+            &quot;balance&quot;: &quot;0x0&quot;,
+            &quot;init&quot;: {
+                &quot;admin&quot;: &quot;0xd0db65Fc3fa41001C70E8E6F31F837E3010c6F68&quot;,
+                &quot;firstLockPeriod&quot;: &quot;63072000&quot;,
+                &quot;releasePeriod&quot;: &quot;2592000&quot;,
+                &quot;releaseCnt&quot;: &quot;48&quot;,
+                &quot;ruEpoch&quot;: &quot;28800&quot;
+            },
+            &quot;code&quot;: &quot;0x608060405260043610620003e35760003560e01c80637bd8d00c1162...&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>000000000000000000000000000000000000F000</code> is the address that Cube assignes to Staking contract. This address is fixed and thus cannot be customized.</p>
+<p><code>init</code> is the arguments for contract initalization, which can be interpreted as following: 
+- <code>admin</code>: contract admin
+- <code>firstLockPeriod</code>: first lock period in seconds
+- <code>releasePeriod</code>: the time of one release period in seconds
+- <code>releaseCnt</code>: the total count of release period
+- <code>ruEpoch</code>: the number of blocks to update block rewards</p>
+<p><code>code</code> is the deployed bytecode of the contract</p>
+<h4 id="communitypool-contract-config">CommunityPool contract config</h4>
+<p>CommunityPool controls the gas rewards for excellent DAPPs. Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;alloc&quot;: {
+        &quot;000000000000000000000000000000000000F001&quot;: {
+            &quot;balance&quot;: &quot;0x0&quot;,
+            &quot;init&quot;: {
+                &quot;admin&quot;: &quot;0xd0db65Fc3fa41001C70E8E6F31F837E3010c6F68&quot;
+            },
+            &quot;code&quot;: &quot;0x6080604052600436106100745760003560e01c80638f283970116100...&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>000000000000000000000000000000000000F001</code> is the address that Cube assignes to CommunityPool contract. This address is fixed and thus cannot be customized.</p>
+<p><code>init.admin</code> is the address admin</p>
+<p><code>balance</code> is 0</p>
+<p><code>code</code> is the deployed bytecode of the contract</p>
+<h4 id="bonuspool-contract-config">BonusPool contract config</h4>
+<p>BonusPool is used to manage bonus for staking. Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;alloc&quot;: {
+        &quot;000000000000000000000000000000000000F002&quot;: {
+            &quot;balance&quot;: &quot;592000000000000000000&quot;,
+            &quot;code&quot;: &quot;0x6080604052600436106100555760003560e01c8063158ef93e146100...&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>000000000000000000000000000000000000F002</code> is the address that Cube assignes to BonusPool contract. This address is fixed and thus cannot be customized.</p>
+<p><code>balance</code> is equal to the total bonus of staking</p>
+<p><code>code</code> is the deployed bytecode of the contract</p>
+<h4 id="genesislock-contract-config">GenesisLock contract config</h4>
+<p>GenesisLock is used to manage token locking and release. Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;alloc&quot;: {
+        &quot;000000000000000000000000000000000000F003&quot;: {
+            &quot;balance&quot;: &quot;0x0&quot;,
+            &quot;init&quot;: {
+                &quot;periodTime&quot;: &quot;2592000&quot;,
+                &quot;lockedAccounts&quot;: [
+                    {
+                        &quot;userAddress&quot;: &quot;0x2FA024cA813449D315d71D49BdDF7c175C036729&quot;,
+                        &quot;typeId&quot;: &quot;1&quot;,
+                        &quot;lockedAmount&quot;: &quot;1000000000000000000000&quot;,
+                        &quot;lockedTime&quot;: &quot;0&quot;,
+                        &quot;periodAmount&quot;: &quot;48&quot;
+                    },
+                    {
+                        &quot;userAddress&quot;: &quot;0x3F2327847cF1a9C74a835fe1A2DCbbE2FdAa9626&quot;,
+                        &quot;typeId&quot;: &quot;2&quot;,
+                        &quot;lockedAmount&quot;: &quot;2000000000000000000000&quot;,
+                        &quot;lockedTime&quot;: &quot;31104000&quot;,
+                        &quot;periodAmount&quot;: &quot;24&quot;
+                    }
+                ]
+            },
+            &quot;code&quot;:&quot;0x608060405234801561001057600080fd5b50600436106100cf576000...&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>000000000000000000000000000000000000F003</code> is the address that Cube assignes to GenesisLock contract. This address is fixed and thus cannot be customized.</p>
+<p><code>periodTime</code> is the release period in seconds</p>
+<p><code>init.lockedAccounts</code> is the accounts info of token locking
+- <code>userAddress</code>: address of accounts
+- <code>typeId</code>: accounts type, including 1-community, 2-private sale, 3-team, 4-Ecosystem foundation
+- <code>lockedAmount</code>: token locked amount in wei
+- <code>lockedTime</code>: token locked time in seconds
+- <code>periodAmount</code>: the total amount of periods, which is 30 day in one period</p>
+<p><code>code</code> is the deployed bytecode of the contract</p>
+<h3 id="validators-info">validators info</h3>
+<p>The config is located in item of <code>validators</code>, Demo config is showed as following:</p>
+<pre><code class="language-json">{
+    &quot;validators&quot;: [
+        {
+            &quot;address&quot;: &quot;0x8Cc5A1a0802DB41DB826C2FcB72423744338DcB0&quot;,
+            &quot;manager&quot;: &quot;0xd0db65Fc3fa41001C70E8E6F31F837E3010c6F68&quot;,
+            &quot;rate&quot;: &quot;20&quot;,
+            &quot;stake&quot;: &quot;350&quot;,
+            &quot;acceptDelegation&quot;: true
+        },
+        {
+            &quot;address&quot;: &quot;0xd0db65Fc3fa41001C70E8E6F31F837E3010c6F68&quot;,
+            &quot;manager&quot;: &quot;0xd0db65Fc3fa41001C70E8E6F31F837E3010c6F68&quot;,
+            &quot;rate&quot;: &quot;10&quot;,
+            &quot;stake&quot;: &quot;550&quot;,
+            &quot;acceptDelegation&quot;: true
+        }
+    ]
+}
+</code></pre>
+<p>the info of validator contains:
+- <code>address</code>: the address of validator
+- <code>manager</code>: the address of manager of validator
+- <code>rate</code>: the percentage of commission for all block rewards
+- <code>stake</code>: the amount of staking native token, the unit of this feild is <code>CUBE</code>
+- <code>acceptDelegation</code>: whether accepting delegation or not</p>
+<p>One thing need to be explained more specifically is <code>rate</code>. The validator can take rate% of block rewards as commission, and the left part is the one that will be allocated according to their token staked.</p>
+<h2 id="verify-genesis">Verify genesis</h2>
+<h3 id="check-tool">Check tool</h3>
+<p>Compile the tool of checking genesis file by running</p>
+<pre><code>make all
+</code></pre>
+<p>And the tool <code>genesis-check</code> will be found in <code>build/bin</code></p>
+<p>The source code of <code>genesis-check</code> is <code>cmd/genesis-check/main.go</code></p>
+<h3 id="check-method">Check method</h3>
+<p>Running the following command to generate genesis block hash from genesis config file</p>
+<pre><code>./genesis-check &lt;genesis file&gt;
+</code></pre>
+<p>The outputs looks like</p>
+<pre><code>Genesis Hash: &lt;Genesis Hash&gt;
+Is Mainnet: false
+Is Testnet: true
+</code></pre>
+<p>Then you may compare if the generated genesis hash is the expected one</p>
+<h3 id="built-in-genesis">Built-in genesis</h3>
+<p>The genesis blocks of testnet and mainnet are hard-coding in binary. </p>
+<p>Mainnet genesis block(not confirmed) is defined in <code>core.DefaultGenesisBlock()</code>, which is located in <code>core/genesis.go:453</code></p>
+<p>Testnet genesis block is defined in <code>core.DefaultTestnetGenesisBlock()</code>, which is located in <code>core/genesis.go:468</code></p>
+<p>Also, related type definations of corresponding genesis file are <code>Genesis</code>, <code>GenesisAlloc</code>, <code>GenesisAccount</code>, <code>Init</code>, <code>LockedAccount</code> and <code>ValidatorInfo</code>, which are all located in <code>core/genesis.go</code></p>
+<h2 id="mainnet">mainnet</h2>
+<p><strong>Genesis block hash</strong>: 0x878c0e84bf867ddd5ede830d3b17f853eeb985530e1a74468ce898094427d41f</p>
+<blockquote>
+<p><code>MainnetGenesisHash</code> in the code: <a href="https://github.com/cube-network/Cube/blob/master/params/config.go#L30">https://github.com/cube-network/Cube/blob/master/params/config.go#L30</a></p>
+</blockquote>
+<p><a href="/static/mainnet_genesis.json" title=":ignore">View or download mainnet genesis file</a></p>
+<h2 id="testnet">testnet</h2>
+<p><strong>Genesis block hash</strong>: 0x2eeaa9dab31682321c7d8afd3ec0ddef772f9361e7f21126e3d17f2756e49482</p>
+<p><a href="/static/testnet_genesis.json" title=":ignore">View or download testnet genesis file</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

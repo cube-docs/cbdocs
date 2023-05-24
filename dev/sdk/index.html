@@ -1,0 +1,1438 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="CubeChain">
+      
+      
+        <link rel="canonical" href="https://docs.cube.network/dev/sdk/">
+      
+      
+        <link rel="prev" href="../deploy/">
+      
+      
+        <link rel="next" href="../about-eip1559/">
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
+    
+    
+      
+        <title>On-chain Interaction - CubeChain docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#on-chain-interaction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CubeChain docs" class="md-header__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CubeChain docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              On-chain Interaction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CubeChain docs" class="md-nav__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    CubeChain docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        About Cube
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wallet/" class="md-nav__link">
+        Wallet
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bridge/" class="md-nav__link">
+        Bridge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consensus/" class="md-nav__link">
+        Consensus
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genesis/" class="md-nav__link">
+        Genesis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        Compile and Run
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          On-chain Interaction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        On-chain Interaction
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ethereums-rpc" class="md-nav__link">
+    Ethereum's RPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cube-specific-rpc" class="md-nav__link">
+    Cube Specific RPC
+  </a>
+  
+    <nav class="md-nav" aria-label="Cube Specific RPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eth_getblockpredictstatus" class="md-nav__link">
+    eth_getBlockPredictStatus
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getBlockPredictStatus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getlastfinalizedblockinfo" class="md-nav__link">
+    eth_getLastFinalizedBlockInfo
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getLastFinalizedBlockInfo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getdoublesignpunishtransactionsbyblocknumber" class="md-nav__link">
+    eth_getDoubleSignPunishTransactionsByBlockNumber
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getDoubleSignPunishTransactionsByBlockNumber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_1" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getdoublesignpunishtransactionsbyblockhash" class="md-nav__link">
+    eth_getDoubleSignPunishTransactionsByBlockHash
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getDoubleSignPunishTransactionsByBlockHash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_2" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miner_startattestation" class="md-nav__link">
+    miner_startAttestation
+  </a>
+  
+    <nav class="md-nav" aria-label="miner_startAttestation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miner_stopattestation" class="md-nav__link">
+    miner_stopAttestation
+  </a>
+  
+    <nav class="md-nav" aria-label="miner_stopAttestation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-rpc-error-codes" class="md-nav__link">
+    JSON RPC Error Codes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    SDK
+  </a>
+  
+    <nav class="md-nav" aria-label="SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web3js-simple-example" class="md-nav__link">
+    web3js simple example
+  </a>
+  
+    <nav class="md-nav" aria-label="web3js simple example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-chain-info" class="md-nav__link">
+    1. Get chain info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-generate-account" class="md-nav__link">
+    2. Generate account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-build-transaction" class="md-nav__link">
+    3. Build transaction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-eip1559/" class="md-nav__link">
+        About EIP1559
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-finality/" class="md-nav__link">
+        About Finality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contract/" class="md-nav__link">
+        Contract
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private_chain/" class="md-nav__link">
+        Private Chain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphnode/" class="md-nav__link">
+        Graph Node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mainnet/" class="md-nav__link">
+        Mainnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testnet/" class="md-nav__link">
+        Testnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dapp-gov/" class="md-nav__link">
+        DApp-Governance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wallet-connect/" class="md-nav__link">
+        WalletConnect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../white-application/" class="md-nav__link">
+        Whitelist Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../price-oracle/" class="md-nav__link">
+        Price Oracle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Announcement/" class="md-nav__link">
+        Announcement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ethereums-rpc" class="md-nav__link">
+    Ethereum's RPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cube-specific-rpc" class="md-nav__link">
+    Cube Specific RPC
+  </a>
+  
+    <nav class="md-nav" aria-label="Cube Specific RPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eth_getblockpredictstatus" class="md-nav__link">
+    eth_getBlockPredictStatus
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getBlockPredictStatus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getlastfinalizedblockinfo" class="md-nav__link">
+    eth_getLastFinalizedBlockInfo
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getLastFinalizedBlockInfo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getdoublesignpunishtransactionsbyblocknumber" class="md-nav__link">
+    eth_getDoubleSignPunishTransactionsByBlockNumber
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getDoubleSignPunishTransactionsByBlockNumber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_1" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eth_getdoublesignpunishtransactionsbyblockhash" class="md-nav__link">
+    eth_getDoubleSignPunishTransactionsByBlockHash
+  </a>
+  
+    <nav class="md-nav" aria-label="eth_getDoubleSignPunishTransactionsByBlockHash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_2" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miner_startattestation" class="md-nav__link">
+    miner_startAttestation
+  </a>
+  
+    <nav class="md-nav" aria-label="miner_startAttestation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miner_stopattestation" class="md-nav__link">
+    miner_stopAttestation
+  </a>
+  
+    <nav class="md-nav" aria-label="miner_stopAttestation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-rpc-error-codes" class="md-nav__link">
+    JSON RPC Error Codes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    SDK
+  </a>
+  
+    <nav class="md-nav" aria-label="SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web3js-simple-example" class="md-nav__link">
+    web3js simple example
+  </a>
+  
+    <nav class="md-nav" aria-label="web3js simple example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-chain-info" class="md-nav__link">
+    1. Get chain info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-generate-account" class="md-nav__link">
+    2. Generate account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-build-transaction" class="md-nav__link">
+    3. Build transaction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="on-chain-interaction">On-chain interaction</h1>
+<p><code>Cube</code> is compatible with <code>Ethereum</code>'s ecosystem, support all <code>Ethereum</code>'s <code>RPC</code> API and SDK. </p>
+<p>Besides, there are a few Cube specific <code>RPC</code> APIs, showing bellow.</p>
+<h2 id="ethereums-rpc">Ethereum's RPC</h2>
+<p><a href="https://eth.wiki/json-rpc/api">RPC Method List</a></p>
+<p>Example:</p>
+<pre><code> curl -s -H 'content-type:application/json' -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;web3_clientVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:67}' http://localhost:8545
+</code></pre>
+<h2 id="cube-specific-rpc">Cube Specific RPC</h2>
+<h3 id="eth_getblockpredictstatus">eth_getBlockPredictStatus</h3>
+<p>Returns the status of the block obtained according to the <a href="https://www.adiasg.me/eth2/2020/04/09/casper-ffg-in-eth2-0.html" title="Casper FFG in Eth2.0">CasperFFG</a> consensus rule</p>
+<h4 id="parameters">Parameters</h4>
+<hr />
+<ol>
+<li><code>DATA</code> - 32 Bytes - Hash of a block.</li>
+<li><code>QUANTITY</code> - integer of a block number,</li>
+</ol>
+<pre><code>params: [
+   &quot;0x72d17147a11acd2912846f8c5d10d842be45d67563b2fb6660e0272cbe3a664b&quot;,
+   '0x1b4', // 436
+]
+</code></pre>
+<hr />
+<h4 id="returns">Returns</h4>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>status</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Unknown</td>
+<td>The status of the current block is unknown</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Justified</td>
+<td>The current block has reached a preliminary consensus, but there is a certain chance to discard it</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Finalized</td>
+<td>The current block has reached a final consensus and will not be forked and discarded</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="example">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getBlockPredictStatus&quot;,&quot;params&quot;:[&quot;0x72d17147a11acd2912846f8c5d10d842be45d67563b2fb6660e0272cbe3a664b&quot;, &quot;0x1b4&quot;],&quot;id&quot;:1}' localhost:8545
+</code></pre>
+<pre><code class="language-shell">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: 2
+}
+</code></pre>
+<h3 id="eth_getlastfinalizedblockinfo">eth_getLastFinalizedBlockInfo</h3>
+<p>Query the block info of the latest finalized status</p>
+<h4 id="parameters_1">Parameters</h4>
+<hr />
+<p>none</p>
+<h4 id="example_1">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;eth_getLastFinalizedBlockInfo\&quot;,\&quot;params\&quot;:[],\&quot;id\&quot;:1}&quot; localhost:8545
+</code></pre>
+<pre><code class="language-shell">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: {
+    &quot;Number&quot;: &quot;0x91b&quot;,
+    &quot;Hash&quot;: &quot;0x80afd1753ed7a5ddc02188e6fe9e8e3fe5c5832f9415527081214ebe240e2e98&quot;
+  }
+}
+</code></pre>
+<h3 id="eth_getdoublesignpunishtransactionsbyblocknumber">eth_getDoubleSignPunishTransactionsByBlockNumber</h3>
+<p>Returns the penalty transaction of violating multiple signatures in the block queried according to the block number</p>
+<h4 id="parameters_2">Parameters</h4>
+<hr />
+<ol>
+<li><code>QUANTITY</code> - integer of a block number</li>
+</ol>
+<pre><code>params: [
+   '0x1b4'
+]
+</code></pre>
+<hr />
+<h4 id="returns_1">Returns</h4>
+<hr />
+<p>Returns all penalty transactions submitted for violating the multi sign rule in the block.
+The submitted penalty transaction body contains two supporting information. The address of to is a special address, which is used to filter transactions</p>
+<h4 id="example_2">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getDoubleSignPunishTransactionsByBlockNumber&quot;,&quot;params&quot;:[&quot;0x192&quot;],&quot;id&quot;:1}' localhost:8545
+</code></pre>
+<pre><code class="language-shell">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: [
+    {
+      &quot;blockHash&quot;: &quot;0xd6c76c19f9461e1df42b24ad38b7b960aeaecde2339ddd637e1b965d916ce561&quot;,
+      &quot;blockNumber&quot;: &quot;0x192&quot;,
+      &quot;from&quot;: &quot;0x0942737e33b1ad9b028bb4fab46677b1e5371d79&quot;,
+      &quot;gas&quot;: &quot;0x40641b5&quot;,
+      &quot;gasPrice&quot;: &quot;0x0&quot;,
+      &quot;hash&quot;: &quot;0x793e9a7314b8ccdd0fdef1f83153f9904689bd9b46f29dea5c94c6f0b1a97785&quot;,
+      &quot;input&quot;: &quot;0xf9016202f88de4a0b0f01aa0a340f7f8275239c2f1f25bf81f559a75717990725e9eec5bbf11ee0182018ae4a0f2a4a531ac4c906d0cfd221dce758126717d96d01aa11cd4877c30dc779a829782018ba0dd418ea9c5d3c19cb5d233a6180f544227620cbb2d995af4bd74d2957b7032e7a01342371e87a1daf3f34cbf4faf9511820216cf313ca8b50c27f40da30b30d93b80f88de4a03f546da5c906fe37519c0e056f1407d7f72c622c75ebd9f1e26e8a76765348fe820186e4a0f06463b18dd621d4b8c33364acd57d185c1ec67f3ae28db84133d6d7dfcad93d82018ea0dfa9dc35248be47d77840573105e22a44199d60ef898c289e7bbdcf65f963b40a06565df9f0cd4e6009a2e813ada92cd538068a5867a5fa1d81ca0b5dad97fcb868082019094000000000000000000000000000000000000f006940942737e33b1ad9b028bb4fab46677b1e5371d7994540c913ad8b197152eb041bc56f9c6ab314d25ba80&quot;,
+      &quot;nonce&quot;: &quot;0x0&quot;,
+      &quot;to&quot;: &quot;0x00000000000000000000000000000000000fffff&quot;,
+      &quot;transactionIndex&quot;: &quot;0x0&quot;,
+      &quot;value&quot;: &quot;0x0&quot;,
+      &quot;type&quot;: &quot;0x0&quot;,
+      &quot;v&quot;: &quot;0x4a91&quot;,
+      &quot;r&quot;: &quot;0x1f4c0c163ddd523a881bf66f8beba180f23494db42d0249f6a35e90ab72f564f&quot;,
+      &quot;s&quot;: &quot;0x2c683319d430e47f436e0db1588bf592dc7656ab32e8727455e3aa64113e6102&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="eth_getdoublesignpunishtransactionsbyblockhash">eth_getDoubleSignPunishTransactionsByBlockHash</h3>
+<p>Returns the penalty transaction of violating multiple signatures in the block queried by the block hash</p>
+<h4 id="parameters_3">Parameters</h4>
+<hr />
+<ol>
+<li><code>DATA</code> - 32 Bytes - Hash of a block.</li>
+</ol>
+<pre><code>params: [
+   &quot;0x72d17147a11acd2912846f8c5d10d842be45d67563b2fb6660e0272cbe3a664b&quot;
+]
+</code></pre>
+<h4 id="returns_2">Returns</h4>
+<hr />
+<p>Returns all penalty transactions submitted for violating the multi sign rule in the block</p>
+<h4 id="example_3">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getDoubleSignPunishTransactionsByBlockHash&quot;,&quot;params&quot;:[&quot;0x793e9a7314b8ccdd0fdef1f83153f9904689bd9b46f29dea5c94c6f0b1a97785&quot;],&quot;id&quot;:1}' localhost:8545
+</code></pre>
+<pre><code class="language-shell">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: [
+    {
+      &quot;blockHash&quot;: &quot;0xd6c76c19f9461e1df42b24ad38b7b960aeaecde2339ddd637e1b965d916ce561&quot;,
+      &quot;blockNumber&quot;: &quot;0x192&quot;,
+      &quot;from&quot;: &quot;0x0942737e33b1ad9b028bb4fab46677b1e5371d79&quot;,
+      &quot;gas&quot;: &quot;0x40641b5&quot;,
+      &quot;gasPrice&quot;: &quot;0x0&quot;,
+      &quot;hash&quot;: &quot;0x793e9a7314b8ccdd0fdef1f83153f9904689bd9b46f29dea5c94c6f0b1a97785&quot;,
+      &quot;input&quot;: &quot;0xf9016202f88de4a0b0f01aa0a340f7f8275239c2f1f25bf81f559a75717990725e9eec5bbf11ee0182018ae4a0f2a4a531ac4c906d0cfd221dce758126717d96d01aa11cd4877c30dc779a829782018ba0dd418ea9c5d3c19cb5d233a6180f544227620cbb2d995af4bd74d2957b7032e7a01342371e87a1daf3f34cbf4faf9511820216cf313ca8b50c27f40da30b30d93b80f88de4a03f546da5c906fe37519c0e056f1407d7f72c622c75ebd9f1e26e8a76765348fe820186e4a0f06463b18dd621d4b8c33364acd57d185c1ec67f3ae28db84133d6d7dfcad93d82018ea0dfa9dc35248be47d77840573105e22a44199d60ef898c289e7bbdcf65f963b40a06565df9f0cd4e6009a2e813ada92cd538068a5867a5fa1d81ca0b5dad97fcb868082019094000000000000000000000000000000000000f006940942737e33b1ad9b028bb4fab46677b1e5371d7994540c913ad8b197152eb041bc56f9c6ab314d25ba80&quot;,
+      &quot;nonce&quot;: &quot;0x0&quot;,
+      &quot;to&quot;: &quot;0x00000000000000000000000000000000000fffff&quot;,
+      &quot;transactionIndex&quot;: &quot;0x0&quot;,
+      &quot;value&quot;: &quot;0x0&quot;,
+      &quot;type&quot;: &quot;0x0&quot;,
+      &quot;v&quot;: &quot;0x4a91&quot;,
+      &quot;r&quot;: &quot;0x1f4c0c163ddd523a881bf66f8beba180f23494db42d0249f6a35e90ab72f564f&quot;,
+      &quot;s&quot;: &quot;0x2c683319d430e47f436e0db1588bf592dc7656ab32e8727455e3aa64113e6102&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="miner_startattestation">miner_startAttestation</h3>
+<p>Start submitting block attestation
+By default, it is started at the same time when <code>miner_start</code> is executed</p>
+<h4 id="parameters_4">Parameters</h4>
+<hr />
+<p>none</p>
+<h4 id="example_4">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;miner_startAttestation\&quot;,\&quot;params\&quot;:[],\&quot;id\&quot;:1}&quot; localhost:8545
+</code></pre>
+<h3 id="miner_stopattestation">miner_stopAttestation</h3>
+<p>Stop submitting block attestation
+By default, it is stopped at the same time when <code>miner_stop</code> is executed</p>
+<h4 id="parameters_5">Parameters</h4>
+<hr />
+<p>none</p>
+<h4 id="example_5">Example</h4>
+<hr />
+<pre><code class="language-shell">curl -X POST -H &quot;Content-Type: application/json&quot; --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;miner_stopAttestation\&quot;,\&quot;params\&quot;:[],\&quot;id\&quot;:1}&quot; localhost:8545
+</code></pre>
+<h2 id="json-rpc-error-codes">JSON RPC Error Codes</h2>
+<p>See <a href="https://eth.wiki/json-rpc/json-rpc-error-codes-improvement-proposal">json-rpc-error-codes-improvement-proposal</a> for details.</p>
+<h2 id="sdk">SDK</h2>
+<p>Use <code>Ethereum</code> SDK library such as <code>web3j</code>,<code>web3js</code>, <code>ethers.js</code>, etc for development. </p>
+<h3 id="web3js-simple-example">web3js simple example</h3>
+<h4 id="1-get-chain-info">1. Get chain info</h4>
+<pre><code class="language-JavaScript">const Web3 = require('web3')
+
+async function getChainId() {
+    const web3 = new Web3('https://http-mainnet.cube.network')
+    let chainId = await web3.eth.getChainId()
+    console.log(`chain id: ${chainId}`)
+    return chainId
+}
+</code></pre>
+<h4 id="2-generate-account">2. Generate account</h4>
+<pre><code class="language-JavaScript">const Web3Accounts = require('web3-eth-accounts')
+
+let account = new Web3Accounts().create()
+//do not do this on prd env
+console.log(`account generated. address: ${account.address}, private key: ${account.privateKey}`)
+</code></pre>
+<h4 id="3-build-transaction">3. Build transaction</h4>
+<pre><code class="language-JavaScript">const Web3 = require('web3')
+
+async function transfer(fromAccount, to, value){
+    const web3 = new Web3('https://http-mainnet.cube.network')
+    let chainId = await web3.eth.getChainId()
+    let nonce = await web3.eth.getTransactionCount(fromAccount.address)
+    let gasPrice = await web3.eth.getGasPrice()
+
+    let unsigned = {
+        from: fromAccount.address,
+        to,
+        value: web3.utils.numberToHex(web3.utils.toWei(value, 'ether')),
+        gasPrice,
+        nonce,
+        chainId,
+    }
+
+    unsigned.gas = await web3.eth.estimateGas(unsigned)
+
+    let signed = await fromAccount.signTransaction(unsigned)
+    return signed
+}
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

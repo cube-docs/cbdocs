@@ -1,0 +1,1070 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="CubeChain">
+      
+      
+        <link rel="canonical" href="https://docs.cube.network/testnet/">
+      
+      
+        <link rel="prev" href="../mainnet/">
+      
+      
+        <link rel="next" href="../dev/dapp-gov/">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
+    
+    
+      
+        <title>Testnet - CubeChain docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testnet-info" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CubeChain docs" class="md-header__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CubeChain docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testnet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CubeChain docs" class="md-nav__button md-logo" aria-label="CubeChain docs" data-md-component="logo">
+      
+  <img src="../images/favicon.png" alt="logo">
+
+    </a>
+    CubeChain docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cube-network/cube-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About Cube
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wallet/" class="md-nav__link">
+        Wallet
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bridge/" class="md-nav__link">
+        Bridge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consensus/" class="md-nav__link">
+        Consensus
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genesis/" class="md-nav__link">
+        Genesis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/install/" class="md-nav__link">
+        Compile and Run
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/deploy/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/sdk/" class="md-nav__link">
+        On-chain Interaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/about-eip1559/" class="md-nav__link">
+        About EIP1559
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/about-finality/" class="md-nav__link">
+        About Finality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/contract/" class="md-nav__link">
+        Contract
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/private_chain/" class="md-nav__link">
+        Private Chain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/graphnode/" class="md-nav__link">
+        Graph Node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mainnet/" class="md-nav__link">
+        Mainnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Testnet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Testnet
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chainid" class="md-nav__link">
+    chainid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    rpc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-nodes" class="md-nav__link">
+    archive nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explorer" class="md-nav__link">
+    explorer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faucet" class="md-nav__link">
+    faucet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-contract-address" class="md-nav__link">
+    tool contract address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genesis" class="md-nav__link">
+    genesis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crc20-test-token" class="md-nav__link">
+    crc20 Test Token
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/dapp-gov/" class="md-nav__link">
+        DApp-Governance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/wallet-connect/" class="md-nav__link">
+        WalletConnect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/white-application/" class="md-nav__link">
+        Whitelist Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/price-oracle/" class="md-nav__link">
+        Price Oracle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Announcement/" class="md-nav__link">
+        Announcement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chainid" class="md-nav__link">
+    chainid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    rpc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-nodes" class="md-nav__link">
+    archive nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explorer" class="md-nav__link">
+    explorer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faucet" class="md-nav__link">
+    faucet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-contract-address" class="md-nav__link">
+    tool contract address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genesis" class="md-nav__link">
+    genesis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crc20-test-token" class="md-nav__link">
+    crc20 Test Token
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="testnet-info">Testnet Info</h1>
+<h2 id="chainid">chainid</h2>
+<pre><code>1819
+</code></pre>
+<h2 id="rpc">rpc</h2>
+<blockquote>
+<p>There will be a rate limit. Currently is 50r/s per session/IP .</p>
+</blockquote>
+<pre><code>https://http-testnet.cube.network
+wss://ws-testnet.cube.network
+
+</code></pre>
+<h2 id="archive-nodes">archive nodes</h2>
+<blockquote>
+<p>There will be a rate limit. Currently is 50r/s per session/IP .</p>
+<p>Currently available namespace: ["eth", "net", "web3"]</p>
+</blockquote>
+<pre><code>https://http-testnet-archive.cube.network
+wss://ws-testnet-archive.cube.network
+</code></pre>
+<h2 id="explorer">explorer</h2>
+<p>https://testnet.cubescan.network</p>
+<h2 id="faucet">faucet</h2>
+<p>https://faucet.cube.network</p>
+<h2 id="tool-contract-address">tool contract address</h2>
+<ul>
+<li>WCUBE Address：<a href="https://testnet.cubescan.network/en-us/address/0xb9164670a2f388d835b868b3d0d441fa1be5bb00?type=contract">0xb9164670a2f388d835b868b3d0d441fa1be5bb00</a></li>
+<li>Multicall Address:  <a href="https://testnet.cubescan.network/en-us/address/0x5db2ab28bed8ebdde5f7202f5a11ff7e78ad1fb5?type=contract">0x5db2ab28bed8ebdde5f7202f5a11ff7e78ad1fb5</a></li>
+<li>Multicall2 Address:  <a href="https://testnet.cubescan.network/en-us/address/0xd1c09d6dd5c81d441b2825d69d438baac791beec?type=contract">0xd1c09d6dd5c81d441b2825d69d438baac791beec</a></li>
+</ul>
+<h2 id="genesis">genesis</h2>
+<p><strong>Genesis block hash</strong>: 0x2eeaa9dab31682321c7d8afd3ec0ddef772f9361e7f21126e3d17f2756e49482</p>
+<p><a href="/static/testnet_genesis.json" title=":ignore">View or download testnet genesis file</a></p>
+<h2 id="crc20-test-token">crc20 Test Token</h2>
+<p><strong>Testnet CRC20</strong>  </p>
+<p>For testnet only.</p>
+<p><a href="https://faucet.cube.network/">CUBE Chain Test Faust</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">Symbol</th>
+<th align="center">Name</th>
+<th align="center">Contract address</th>
+<th align="center">Decimals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">DAI</td>
+<td align="center">Dai Stablecoin (DAI)</td>
+<td align="center">0xdf443238D7B80446c3b3E76A556a354670dA0205</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">ATOM</td>
+<td align="center">Cosmos Hub(ATOM)</td>
+<td align="center">0x2485f5450d451E5bE2Aac1aC914BFC5103248283</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">ZRX</td>
+<td align="center">ZRX (ZRX)</td>
+<td align="center">0x1aAcE26b785895A72eE906da44fDA33f1361B4BC</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">YFI</td>
+<td align="center">yearn.finance (YFI)</td>
+<td align="center">0xc1e207ef65716C75A81b72843CA6eb8456aee221</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">ZIL</td>
+<td align="center">Zilliqa (ZIL)</td>
+<td align="center">0x86CA6ff906Db4896873a2873fEDc1282701651aD</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">GALA</td>
+<td align="center">Gala (GALA)</td>
+<td align="center">0xd41d456196b1728A6B3822F2c6b67B57d2C54605</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">APE</td>
+<td align="center">ApeCoin(APE)</td>
+<td align="center">0xC9f0b1A73163348046AF2B82F2B174A996FbBe45</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">FIL</td>
+<td align="center">Filecoin (FIL)</td>
+<td align="center">0x78820713de7899BeF4Adc8B2650B28F1b009796d</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">GMT</td>
+<td align="center">Global Messaging Token(GMT)</td>
+<td align="center">0x5FaF412418a58eE7A86D8E06A99A230EDa01A34a</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">1INCH</td>
+<td align="center">1INCH Token (1INCH)</td>
+<td align="center">0x5a4359B3fF3763C4E8f919A7443Dd97346c7C9c5</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">GRT</td>
+<td align="center">Graph Token (GRT)</td>
+<td align="center">0x7007a315c7AC7c7cD88e1eB67A0b5004Ff421555</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">WBTC</td>
+<td align="center">Wrapped BTC (WBTC)</td>
+<td align="center">0xBd996d73fFdD2E2393cd0a339dE3748ca508B625</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">UNI</td>
+<td align="center">Uniswap (UNI)</td>
+<td align="center">0x44f1C6a6BA8576720422d890f1200A0dDe4D1B75</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">KNC</td>
+<td align="center">KyberNetwork (KNC)</td>
+<td align="center">0xd83407602Ff5Cf0AD94005AaFa9cA0c509f516a2</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">DOGE</td>
+<td align="center">Dogecoin(GOGE)</td>
+<td align="center">0xE3428192cbdbC3EbD66DaaE2b16a4577835F88FC</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">BAT</td>
+<td align="center">BAT (BAT)</td>
+<td align="center">0x41CDd0A85Bd72917Be07eFd1d1D0aE8b24F66F38</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">MKR</td>
+<td align="center">Maker (MKR)</td>
+<td align="center">0xd9CB73D8b542FA9D51f3E967124FE5d2b410099A</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">MATIC</td>
+<td align="center">Matic Token (MATIC)</td>
+<td align="center">0xa955d13f4c7D2798DC3bB1889D94C36dBFfF84a8</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">SUSHI</td>
+<td align="center">SushiToken (SUSHI)</td>
+<td align="center">0x6Dc1dB28ABFAfEF27369B9c108Cf3EB65e61a16F</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">ETH</td>
+<td align="center">ETH (ETH)</td>
+<td align="center">0xbC66B3895A1Ed852B877B2bA8f42E79a846eb732</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">FRAX</td>
+<td align="center">Frax (FRAX)</td>
+<td align="center">0xF9650d5f5215E4D343cA882FdA457609552A43E5</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">SAND</td>
+<td align="center">SAND (SAND)</td>
+<td align="center">0x453372BCBF134B1B62708673a398222Fc6C784CC</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">LINK</td>
+<td align="center">ChainLink Token (LINK)</td>
+<td align="center">0xA9dF2C9589BA384eEB1843259c30D8c72fF94296</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">COMP</td>
+<td align="center">Compound (COMP)</td>
+<td align="center">0x939188925fC7D6Df65F4E6538F6b08a89f7CFa2E</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">SHIB</td>
+<td align="center">SHIBA INU (SHIB)</td>
+<td align="center">0x4072579aBCdd2129ac047313dfcE899c12Faf644</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">MANA</td>
+<td align="center">Decentraland MANA (wMANA)</td>
+<td align="center">0xF6733F87c6d27b6377857C929A8b860AA6ae7B37</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">FTM</td>
+<td align="center">Fantom Token (FTM)</td>
+<td align="center">0xEbA5e7cf10ACE10A2d23E57924718084BB2C031e</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">TRX</td>
+<td align="center">TRON (TRX)</td>
+<td align="center">0x8f17119eba3251f54870d432a377241Ab99319C3</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">DYDX</td>
+<td align="center">dYdX (DYDX)</td>
+<td align="center">0x06674D75B0be72075dd456aB10e8908115484422</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">LRC</td>
+<td align="center">LoopringCoin V2 (LRC)</td>
+<td align="center">0x8689546Bd3b24F72ECC01435cccDEf0A0640FC9c</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">USDC</td>
+<td align="center">USD Coin (USDC)</td>
+<td align="center">0x397f46e835cbee65228c9aF441c48eea50a4Ca37</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">THETA</td>
+<td align="center">Theta Token (THETA)</td>
+<td align="center">0x55811cd6Cd615a9cE0b537A38e01Ae94A5481fd5</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">TUSD</td>
+<td align="center">TrueUSD (TUSD)</td>
+<td align="center">0x1E254310293f18C2c35Ef230A1f3B8EA6FEdbA28</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">BTT</td>
+<td align="center">itTorrent (BTT)</td>
+<td align="center">0x0D6aBB99228743e054cf6bA471A859edC9EC0153</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">AXS</td>
+<td align="center">Axie Infinity Shard(AXS)</td>
+<td align="center">0xe50E9E0b06eDA810FF71f01Ef1Cc53a07f71d052</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">USDT</td>
+<td align="center">Tether USD (USDT)</td>
+<td align="center">0x9bD522cC85BD1bD6d069D5E273e46cCfEE905493</td>
+<td align="center">18</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
